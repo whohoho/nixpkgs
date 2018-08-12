@@ -3819,6 +3819,8 @@ with pkgs;
 
   libgaminggear = callPackage ../development/libraries/libgaminggear { };
 
+  libhandy = callPackage ../development/libraries/libhandy { };
+
   libipfix = callPackage ../development/libraries/libipfix { };
 
   libircclient = callPackage ../development/libraries/libircclient { };
