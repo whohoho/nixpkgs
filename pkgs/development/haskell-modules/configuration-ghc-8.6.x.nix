@@ -47,10 +47,8 @@ self: super: {
   # LTS-12.x versions do not compile.
   base-orphans = self.base-orphans_0_8;
   contravariant = self.contravariant_1_5;
-  control-monad-free = markBrokenVersion "0.6.1" super.control-monad-free;
   free = self.free_5_1;
-  Glob = self.Glob_0_9_3;
-  haddock-library = markBroken super.haddock-library;
+  haddock-library = self.haddock-library_1_7_0;
   hslogger = self.hslogger_1_2_12;
   hspec = self.hspec_2_5_8;
   hspec-core = self.hspec-core_2_5_8;
@@ -58,7 +56,7 @@ self: super: {
   hspec-discover = self.hspec-discover_2_5_8;
   hspec-meta = self.hspec-meta_2_5_6;
   hspec-meta_2_5_6 = super.hspec-meta_2_5_6.overrideScope (self: super: { QuickCheck = self.QuickCheck_2_12_6_1; });
-  JuicyPixels = self.JuicyPixels_3_3_1;
+  JuicyPixels = self.JuicyPixels_3_3_2;
   lens = self.lens_4_17;
   polyparse = markBrokenVersion "1.12" super.polyparse;
   primitive = self.primitive_0_6_4_0;
