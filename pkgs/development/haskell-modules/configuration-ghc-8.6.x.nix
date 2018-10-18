@@ -55,7 +55,7 @@ self: super: {
   hspec-meta = self.hspec-meta_2_5_6;
   JuicyPixels = self.JuicyPixels_3_3_2;
   lens = self.lens_4_17;
-  neat-interpolation = self.neat-interpolation_0_3_2_4;
+  neat-interpolation = dontCheck super.neat-interpolation_0_3_2_4;  # avoid dependency on polyparse via HTF
   polyparse = markBrokenVersion "1.12" super.polyparse;
   primitive = self.primitive_0_6_4_0;
   QuickCheck = self.QuickCheck_2_12_6_1;
@@ -69,11 +69,9 @@ self: super: {
   # https://github.com/haskell/fgl/issues/81
   fgl = appendPatch super.fgl ./patches/fgl-monad-fail.patch;
 
-  # Test suite won't compile with QuickCheck 2.12.x.
-  psqueues = dontCheck super.psqueues;
-
   # Test suite does not compile.
   cereal = dontCheck super.cereal;
   Diff = dontCheck super.Diff;
+  psqueues = dontCheck super.psqueues;    # won't cope with QuickCheck 2.12.x
 
 }
