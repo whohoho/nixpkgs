@@ -49,18 +49,22 @@ self: super: {
   contravariant = self.contravariant_1_5;
   free = self.free_5_1;
   haddock-library = self.haddock-library_1_7_0;
+  hpack = self.hpack_0_31_0;
   hspec = self.hspec_2_5_8;
   hspec-core = self.hspec-core_2_5_8;
   hspec-discover = self.hspec-discover_2_5_8;
   hspec-meta = self.hspec-meta_2_5_6;
   JuicyPixels = self.JuicyPixels_3_3_2;
   lens = self.lens_4_17;
+  megaparsec = dontCheck super.megaparsec_7_0_1;
   neat-interpolation = dontCheck super.neat-interpolation_0_3_2_4;  # avoid dependency on polyparse via HTF
+  patience = markBrokenVersion "0.1.1" super.patience;
   polyparse = markBrokenVersion "1.12" super.polyparse;
   primitive = self.primitive_0_6_4_0;
   QuickCheck = self.QuickCheck_2_12_6_1;
   semigroupoids = self.semigroupoids_5_3_1;
   tagged = self.tagged_0_8_6;
+  yaml = self.yaml_0_11_0_0;
 
   # https://github.com/tibbe/unordered-containers/issues/214
   unordered-containers = dontCheck super.unordered-containers;
@@ -72,6 +76,13 @@ self: super: {
   # Test suite does not compile.
   cereal = dontCheck super.cereal;
   Diff = dontCheck super.Diff;
+  http-api-data = doJailbreak super.http-api-data;
+  persistent-sqlite = dontCheck super.persistent-sqlite;
   psqueues = dontCheck super.psqueues;    # won't cope with QuickCheck 2.12.x
+  system-fileio = dontCheck super.system-fileio;  # avoid dependency on broken "patience"
+  unicode-transforms = dontCheck super.unicode-transforms;
+
+  # https://github.com/bmillwood/haskell-src-meta/pull/80
+  haskell-src-meta = doJailbreak super.haskell-src-meta;
 
 }
