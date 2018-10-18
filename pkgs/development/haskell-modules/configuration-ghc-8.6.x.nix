@@ -48,7 +48,7 @@ self: super: {
   base-orphans = self.base-orphans_0_8;
   contravariant = self.contravariant_1_5;
   free = self.free_5_1;
-  haddock-library = self.haddock-library_1_7_0;
+  haddock-library = dontCheck super.haddock-library_1_7_0;
   hpack = self.hpack_0_31_0;
   hspec = self.hspec_2_5_8;
   hspec-core = self.hspec-core_2_5_8;
