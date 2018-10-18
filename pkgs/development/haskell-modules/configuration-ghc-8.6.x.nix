@@ -57,9 +57,8 @@ self: super: {
   JuicyPixels = self.JuicyPixels_3_3_2;
   lens = self.lens_4_17;
   megaparsec = dontCheck super.megaparsec_7_0_1;
-  neat-interpolation = dontCheck super.neat-interpolation_0_3_2_4;  # avoid dependency on polyparse via HTF
+  neat-interpolation = self.neat-interpolation_0_3_2_4;
   patience = markBrokenVersion "0.1.1" super.patience;
-  polyparse = markBrokenVersion "1.12" super.polyparse;
   primitive = self.primitive_0_6_4_0;
   QuickCheck = self.QuickCheck_2_12_6_1;
   semigroupoids = self.semigroupoids_5_3_1;
@@ -84,5 +83,11 @@ self: super: {
 
   # https://github.com/bmillwood/haskell-src-meta/pull/80
   haskell-src-meta = doJailbreak super.haskell-src-meta;
+
+  # The official 1.12 release is broken and unmaintained.
+  polyparse = appendPatch (overrideCabal super.polyparse (drv: { editedCabalFile = null; })) (pkgs.fetchpatch {
+    url = https://github.com/bergmark/polyparse/commit/8a69ee7e57db798c106d8b56dce05b1dfc4fed37.patch;
+    sha256 = "11r73wx1w6bfrkrnk6r9k7rfzp6qrvkdikb2by37ld06c0w6nn57";
+  });
 
 }
