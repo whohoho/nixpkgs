@@ -45,20 +45,20 @@ self: super: {
   hoopl = self.hoopl_3_10_2_2;
 
   # LTS-12.x versions do not compile.
-  QuickCheck = self.QuickCheck_2_12_6_1;
   base-orphans = self.base-orphans_0_8;
   contravariant = self.contravariant_1_5;
   free = self.free_5_1;
   haddock-library = self.haddock-library_1_7_0;
-  hslogger = self.hslogger_1_2_12;
   hspec = self.hspec_2_5_8;
   hspec-core = self.hspec-core_2_5_8;
   hspec-discover = self.hspec-discover_2_5_8;
   hspec-meta = self.hspec-meta_2_5_6;
   JuicyPixels = self.JuicyPixels_3_3_2;
   lens = self.lens_4_17;
+  neat-interpolation = self.neat-interpolation_0_3_2_4;
   polyparse = markBrokenVersion "1.12" super.polyparse;
   primitive = self.primitive_0_6_4_0;
+  QuickCheck = self.QuickCheck_2_12_6_1;
   semigroupoids = self.semigroupoids_5_3_1;
   tagged = self.tagged_0_8_6;
 
@@ -74,5 +74,6 @@ self: super: {
 
   # Test suite does not compile.
   cereal = dontCheck super.cereal;
+  Diff = dontCheck super.Diff;
 
 }
