@@ -45,6 +45,7 @@ self: super: {
   hoopl = self.hoopl_3_10_2_2;
 
   # LTS-12.x versions do not compile.
+  QuickCheck = self.QuickCheck_2_12_6_1;
   base-orphans = self.base-orphans_0_8;
   contravariant = self.contravariant_1_5;
   free = self.free_5_1;
@@ -52,30 +53,26 @@ self: super: {
   hslogger = self.hslogger_1_2_12;
   hspec = self.hspec_2_5_8;
   hspec-core = self.hspec-core_2_5_8;
-  hspec-core_2_5_8 = super.hspec-core_2_5_8.overrideScope (self: super: { QuickCheck = self.QuickCheck_2_12_6_1; });
   hspec-discover = self.hspec-discover_2_5_8;
   hspec-meta = self.hspec-meta_2_5_6;
-  hspec-meta_2_5_6 = super.hspec-meta_2_5_6.overrideScope (self: super: { QuickCheck = self.QuickCheck_2_12_6_1; });
   JuicyPixels = self.JuicyPixels_3_3_2;
   lens = self.lens_4_17;
   polyparse = markBrokenVersion "1.12" super.polyparse;
   primitive = self.primitive_0_6_4_0;
   semigroupoids = self.semigroupoids_5_3_1;
   tagged = self.tagged_0_8_6;
-  unordered-containers = dontCheck super.unordered-containers;
 
-  # Over-specified constraints.
-  async = doJailbreak super.async;                           # base >=4.3 && <4.12, stm >=2.2 && <2.5
-  ChasingBottoms = doJailbreak super.ChasingBottoms;         # base >=4.2 && <4.12, containers >=0.3 && <0.6
-  hashable = doJailbreak super.hashable;                     # base >=4.4 && <4.1
-  hashable-time = doJailbreak super.hashable-time;           # base >=4.7 && <4.12
-  integer-logarithms = doJailbreak super.integer-logarithms; # base >=4.3 && <4.12
-  optparse-applicative = doJailbreak super.optparse-applicative;   # https://github.com/pcapriotti/optparse-applicative/issues/319
-  tar = doJailbreak super.tar;                               # containers >=0.2 && <0.6
-  test-framework = doJailbreak super.test-framework;         # containers >=0.1 && <0.6
+  # https://github.com/tibbe/unordered-containers/issues/214
+  unordered-containers = dontCheck super.unordered-containers;
 
   # https://github.com/haskell/fgl/issues/79
   # https://github.com/haskell/fgl/issues/81
   fgl = appendPatch super.fgl ./patches/fgl-monad-fail.patch;
+
+  # Test suite won't compile with QuickCheck 2.12.x.
+  psqueues = dontCheck super.psqueues;
+
+  # Test suite does not compile.
+  cereal = dontCheck super.cereal;
 
 }
